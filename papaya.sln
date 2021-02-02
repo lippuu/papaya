@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "papaya", "papaya\papaya.vcxproj", "{AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcxproj", "{830A4AF6-0DB6-43AB-8496-46FCCB8E382D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262} = {AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +20,10 @@ Global
 		{AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262}.Debug|x64.Build.0 = Debug|x64
 		{AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262}.Release|x64.ActiveCfg = Release|x64
 		{AE1CA923-66F9-4C87-8BC5-E8D6DC0B2262}.Release|x64.Build.0 = Release|x64
+		{830A4AF6-0DB6-43AB-8496-46FCCB8E382D}.Debug|x64.ActiveCfg = Debug|x64
+		{830A4AF6-0DB6-43AB-8496-46FCCB8E382D}.Debug|x64.Build.0 = Debug|x64
+		{830A4AF6-0DB6-43AB-8496-46FCCB8E382D}.Release|x64.ActiveCfg = Release|x64
+		{830A4AF6-0DB6-43AB-8496-46FCCB8E382D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
