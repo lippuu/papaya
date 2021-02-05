@@ -97,6 +97,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\papaya.cc" />
+    <ClCompile Include="src\platform\debug.cc" />
+    <ClCompile Include="src\platform\platform.cc" />
+    <ClCompile Include="src\platform\window.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\papaya.hpp" />
+    <ClInclude Include="include\platform\debug.hpp" />
+    <ClInclude Include="include\platform\platform.hpp" />
+    <ClInclude Include="include\platform\window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
