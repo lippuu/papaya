@@ -6,6 +6,7 @@ namespace papaya {
    enum class Key {
       None,
       Escape,
+      Space,
 
       Count,
    };

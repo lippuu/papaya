@@ -21,7 +21,12 @@ int game_run()
 
       bool running = true;
       while (running) {
+         input.update();
          if (!dispatcher.update()) {
+            running = false;
+         }
+
+         if (input.keyboard().any_pressed()) {
             running = false;
          }
 

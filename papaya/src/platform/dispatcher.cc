@@ -13,6 +13,9 @@ namespace papaya {
       if (code == SDL_SCANCODE_ESCAPE) {
          return Key::Escape;
       }
+      else if (code == SDL_SCANCODE_SPACE) {
+         return Key::Space;
+      }
 
       return Key::None;
    }
