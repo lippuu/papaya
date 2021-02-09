@@ -39,16 +39,4 @@ namespace papaya {
    {
       SDL_GL_SwapWindow(static_cast<SDL_Window *>(window_));
    }
-
-   bool Window::process()
-   {
-      SDL_Event event{};
-      while (SDL_PollEvent(&event)) {
-         if (event.type == SDL_QUIT) {
-            return false;
-         }
-      }
-
-      return true;
-   }
 } // !papaya

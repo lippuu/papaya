@@ -11,12 +11,17 @@ int game_run()
    try {
       Platform platform;
       Window window("papaya", 1024, 576);
+      Dispatcher dispatcher;
+      Input input;
+
+      dispatcher.register_listener<KeyPressedEvent>(input);
+      dispatcher.register_listener<KeyReleasedEvent>(input);
 
       Debug::log("Platform and window ok!");
 
       bool running = true;
       while (running) {
-         if (!window.process()) {
+         if (!dispatcher.update()) {
             running = false;
          }
 

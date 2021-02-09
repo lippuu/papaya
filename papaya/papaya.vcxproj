@@ -96,14 +96,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\input\input.cc" />
+    <ClCompile Include="src\input\keyboard.cc" />
     <ClCompile Include="src\papaya.cc" />
     <ClCompile Include="src\platform\debug.cc" />
+    <ClCompile Include="src\platform\dispatcher.cc" />
     <ClCompile Include="src\platform\platform.cc" />
     <ClCompile Include="src\platform\window.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\input\input.hpp" />
+    <ClInclude Include="include\input\key.hpp" />
+    <ClInclude Include="include\input\keyboard.hpp" />
     <ClInclude Include="include\papaya.hpp" />
     <ClInclude Include="include\platform\debug.hpp" />
+    <ClInclude Include="include\platform\dispatcher.hpp" />
+    <ClInclude Include="include\platform\events.hpp" />
     <ClInclude Include="include\platform\platform.hpp" />
     <ClInclude Include="include\platform\window.hpp" />
   </ItemGroup>
