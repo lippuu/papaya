@@ -4,18 +4,31 @@
 
 #include <stdexcept>
 
+class Foo {
+public:
+   Foo() {}
+   ~Foo() {}
+
+   int bar = 0;
+};
+
 int game_run()
 {
    using namespace papaya;
 
-   try {
+   try { 
       Platform platform;
       Window window("papaya", 1024, 576);
       Dispatcher dispatcher;
       Input input;
+      FileSystem filesystem("lippuu", "papaya");
 
       dispatcher.register_listener<KeyPressedEvent>(input);
       dispatcher.register_listener<KeyReleasedEvent>(input);
+
+      dispatcher.register_listener<MouseMoveEvent>(input);
+      dispatcher.register_listener<MouseButtonEvent>(input);
+      dispatcher.register_listener<MouseWheelEvent>(input);
 
       Debug::log("Platform and window ok!");
 
@@ -26,7 +39,7 @@ int game_run()
             running = false;
          }
 
-         if (input.keyboard().any_pressed()) {
+         if (input.mouse().any_released()) {
             running = false;
          }
 

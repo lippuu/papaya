@@ -17,4 +17,18 @@ namespace papaya {
    struct KeyReleasedEvent {
       Key keycode{};
    };
+
+   struct MouseMoveEvent {
+      int x{};
+      int y{};
+   };
+
+   struct MouseButtonEvent {
+      Button button{};
+      bool pressed{};
+   };
+
+   struct MouseWheelEvent {
+      int delta{};
+   };
 } // !papaya

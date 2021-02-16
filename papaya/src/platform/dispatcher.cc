@@ -4,10 +4,23 @@
 #include "platform/events.hpp"
 
 #include "input/key.hpp"
+#include "input/button.hpp"
 
 #include <SDL.h>
 
 namespace papaya {
+   inline constexpr Button sdl_to_button(const Uint8 button)
+   {
+      switch (button)
+      {
+         case SDL_BUTTON_LEFT:   return Button::Left;
+         case SDL_BUTTON_RIGHT:  return Button::Right;
+         case SDL_BUTTON_MIDDLE: return Button::Middle;
+      }
+
+      return Button::Invalid;
+   }
+
    inline constexpr Key scancode_to_keycode(const SDL_Scancode code)
    {
       switch (code) {
@@ -121,7 +134,6 @@ namespace papaya {
       return Key::None;
    }
 
-
    Dispatcher::Dispatcher()
    {
    }
@@ -130,7 +142,25 @@ namespace papaya {
    {
       SDL_Event event{};
       while (SDL_PollEvent(&event)) {
-         if (event.type == SDL_KEYDOWN) {
+         if (event.type == SDL_MOUSEMOTION) {
+            submit(MouseMoveEvent{ event.motion.x, event.motion.y });
+         }
+         else if (event.type == SDL_MOUSEBUTTONDOWN) {
+            Button button = sdl_to_button(event.button.button);
+            if (button != Button::Invalid) {
+               submit(MouseButtonEvent{ button, true });
+            }
+         }
+         else if (event.type == SDL_MOUSEBUTTONUP) {
+            Button button = sdl_to_button(event.button.button);
+            if (button != Button::Invalid) {
+               submit(MouseButtonEvent{ button, false });
+            }
+         }
+         else if (event.type == SDL_MOUSEWHEEL) {
+            submit(MouseWheelEvent{ event.wheel.y });
+         }
+         else if (event.type == SDL_KEYDOWN) {
             Key keycode = scancode_to_keycode(event.key.keysym.scancode);
             if (keycode != Key::None) {
                bool repeat = event.key.repeat != 0 ? true : false;
