@@ -4,14 +4,6 @@
 
 #include <stdexcept>
 
-class Foo {
-public:
-   Foo() {}
-   ~Foo() {}
-
-   int bar = 0;
-};
-
 int game_run()
 {
    using namespace papaya;
@@ -23,14 +15,25 @@ int game_run()
       Input input;
       FileSystem filesystem("lippuu", "papaya");
 
+      if (!Graphics::init()) {
+         throw std::runtime_error("Could not initialize Graphics!");
+      }
+
       dispatcher.register_listener<KeyPressedEvent>(input);
       dispatcher.register_listener<KeyReleasedEvent>(input);
-
       dispatcher.register_listener<MouseMoveEvent>(input);
       dispatcher.register_listener<MouseButtonEvent>(input);
       dispatcher.register_listener<MouseWheelEvent>(input);
 
       Debug::log("Platform and window ok!");
+
+      const Vertex vertices[] =
+      {
+         { Vector2( 10.0f,  10.0f), Vector2(0.0f, 0.0f), Color(1.0f, 0.0f, 0.0f, 1.0f) },
+         { Vector2(200.0f,  10.0f), Vector2(0.0f, 0.0f), Color(0.0f, 1.0f, 0.0f, 1.0f) },
+         { Vector2(200.0f, 200.0f), Vector2(0.0f, 0.0f), Color(0.0f, 0.0f, 1.0f, 1.0f) },
+         { Vector2( 10.0f, 200.0f), Vector2(0.0f, 0.0f), Color(1.0f, 0.0f, 1.0f, 1.0f) },
+      };
 
       bool running = true;
       while (running) {
@@ -43,8 +46,20 @@ int game_run()
             running = false;
          }
 
+         float mouse_x = static_cast<float>(input.mouse().x());
+         float mouse_y = static_cast<float>(input.mouse().y());
+         Vector2 mp = Vector2(mouse_x, mouse_y) / Vector2(1024.0f, 576.0f);
+
+         Graphics::clear({ 1.0f, mp.x_, mp.y_, 1.0f });
+         Graphics::set_viewport({ 0, 0, 1024, 576 });
+         Graphics::set_projection( Matrix4::orthographic(1024.0f, 576.0f) );
+
+         Graphics::render(nullptr, 4, vertices);
+
          window.present();
       }
+
+      Graphics::shut();
    } 
    catch (std::exception &e) {
       (void)e;

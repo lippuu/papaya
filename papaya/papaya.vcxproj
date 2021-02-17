@@ -96,9 +96,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\graphics\graphics.cc" />
     <ClCompile Include="src\input\input.cc" />
     <ClCompile Include="src\input\keyboard.cc" />
     <ClCompile Include="src\input\mouse.cc" />
+    <ClCompile Include="src\math\color.cc" />
+    <ClCompile Include="src\math\matrix3.cc" />
+    <ClCompile Include="src\math\matrix4.cc" />
+    <ClCompile Include="src\math\point.cc" />
+    <ClCompile Include="src\math\random.cc" />
+    <ClCompile Include="src\math\rectangle.cc" />
+    <ClCompile Include="src\math\vector2.cc" />
+    <ClCompile Include="src\math\vector3.cc" />
+    <ClCompile Include="src\math\vector4.cc" />
     <ClCompile Include="src\papaya.cc" />
     <ClCompile Include="src\platform\debug.cc" />
     <ClCompile Include="src\platform\dispatcher.cc" />
@@ -108,11 +118,22 @@
     <ClCompile Include="src\platform\window.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\graphics\graphics.hpp" />
+    <ClInclude Include="include\graphics\vertex.hpp" />
     <ClInclude Include="include\input\button.hpp" />
     <ClInclude Include="include\input\input.hpp" />
     <ClInclude Include="include\input\key.hpp" />
     <ClInclude Include="include\input\keyboard.hpp" />
     <ClInclude Include="include\input\mouse.hpp" />
+    <ClInclude Include="include\math\color.hpp" />
+    <ClInclude Include="include\math\matrix3.hpp" />
+    <ClInclude Include="include\math\matrix4.hpp" />
+    <ClInclude Include="include\math\point.hpp" />
+    <ClInclude Include="include\math\random.hpp" />
+    <ClInclude Include="include\math\rectangle.hpp" />
+    <ClInclude Include="include\math\vector2.hpp" />
+    <ClInclude Include="include\math\vector3.hpp" />
+    <ClInclude Include="include\math\vector4.hpp" />
     <ClInclude Include="include\papaya.hpp" />
     <ClInclude Include="include\platform\debug.hpp" />
     <ClInclude Include="include\platform\dispatcher.hpp" />

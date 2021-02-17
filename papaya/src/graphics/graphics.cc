@@ -1,0 +1,75 @@
+// graphics.cc
+
+#include "graphics/graphics.hpp"
+#include "graphics/vertex.hpp"
+
+#include "math/color.hpp"
+#include "math/rectangle.hpp"
+#include "math/matrix4.hpp"
+
+#include <SDL_opengl.h>
+#include <cassert>
+
+namespace papaya {
+   namespace {
+      // Texture white;
+   } // !anon
+
+   bool Graphics::init()
+   {
+      glEnable(GL_TEXTURE_2D);
+      glEnable(GL_BLEND);
+      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+      return true;
+   }
+
+   void Graphics::shut()
+   {
+   }
+
+   void Graphics::clear(const Color &color)
+   {
+      glClearColor(color.r_, color.g_, color.b_, color.a_);
+      glClear(GL_COLOR_BUFFER_BIT);
+   }
+
+   void Graphics::set_viewport(const Rectangle &rect)
+   {
+      glViewport(rect.x_, rect.y_, rect.width_, rect.height_);
+   }
+
+   void Graphics::set_projection(const Matrix4 &projection)
+   {
+      glMatrixMode(GL_PROJECTION);
+      glLoadIdentity();
+      glMultMatrixf(&projection.x_.x_);
+
+      glMatrixMode(GL_MODELVIEW);
+      glLoadIdentity();
+   }
+
+   void Graphics::render(const Texture *texture, const int count, const Vertex *vertices)
+   {
+      assert( ((count % 4) == 0) );
+
+      // todo: bind texture or white (texture, see top)
+
+      glBegin(GL_QUADS); 
+      {
+         for (int index = 0; index < count; index++) {
+            glColor4f(vertices[index].color_.r_,
+                      vertices[index].color_.g_, 
+                      vertices[index].color_.b_, 
+                      vertices[index].color_.a_);
+
+            glTexCoord2f(vertices[index].texcoord_.x_,
+                         vertices[index].texcoord_.y_);
+
+            glVertex2f(vertices[index].position_.x_, 
+                       vertices[index].position_.y_);
+         }
+      }
+      glEnd();
+   }
+} // !papaya
