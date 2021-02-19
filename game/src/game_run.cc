@@ -14,6 +14,7 @@ int game_run()
       Dispatcher dispatcher;
       Input input;
       FileSystem filesystem("lippuu", "papaya");
+      TextureStorage textures(filesystem);
 
       if (!Graphics::init()) {
          throw std::runtime_error("Could not initialize Graphics!");
@@ -35,9 +36,9 @@ int game_run()
          { Vector2( 10.0f, 200.0f), Vector2(0.0f, 1.0f), Color(1.0f, 1.0f, 1.0f, 1.0f) },
       };
 
-      unsigned int bitmap[] = { 0xff0000ff, 0xff00ff00, 0xffff0000, 0xff00ffff };
-      Texture image;
-      image.create(Texture::Format::Rgba8, 2, 2, bitmap);
+      const char *test_image_filename = "assets/test.png";
+      textures.load(test_image_filename);
+      const Texture *image = textures.find(test_image_filename);
 
       bool running = true;
       while (running) {
@@ -58,7 +59,7 @@ int game_run()
          Graphics::set_viewport({ 0, 0, 1024, 576 });
          Graphics::set_projection( Matrix4::orthographic(1024.0f, 576.0f) );
 
-         Graphics::render(&image, 4, vertices);
+         Graphics::render(image, 4, vertices);
 
          window.present();
       }

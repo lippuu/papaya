@@ -62,7 +62,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>include\;..\vendor\SDL2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include\;..\vendor\SDL2\include\;..\vendor\stb\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -82,7 +82,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>include\;..\vendor\SDL2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include\;..\vendor\SDL2\include\;..\vendor\stb\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClCompile Include="src\graphics\graphics.cc" />
     <ClCompile Include="src\graphics\texture.cc" />
+    <ClCompile Include="src\graphics\texture_storage.cc" />
     <ClCompile Include="src\input\input.cc" />
     <ClCompile Include="src\input\keyboard.cc" />
     <ClCompile Include="src\input\mouse.cc" />
@@ -144,6 +145,9 @@
     <ClInclude Include="include\platform\filesystem.hpp" />
     <ClInclude Include="include\platform\platform.hpp" />
     <ClInclude Include="include\platform\window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\graphics\texture_storage.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -26,4 +26,5 @@
 
 #include <graphics/vertex.hpp>
 #include <graphics/texture.hpp>
-#include <graphics/graphics.hpp>
+#include <graphics/graphics.hpp> 
+#include <graphics/texture_storage.hpp>
