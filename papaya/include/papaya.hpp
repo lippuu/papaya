@@ -25,4 +25,5 @@
 #include <input/input.hpp>
 
 #include <graphics/vertex.hpp>
+#include <graphics/texture.hpp>
 #include <graphics/graphics.hpp>

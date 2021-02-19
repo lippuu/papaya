@@ -2,6 +2,7 @@
 
 #include "graphics/graphics.hpp"
 #include "graphics/vertex.hpp"
+#include "graphics/texture.hpp"
 
 #include "math/color.hpp"
 #include "math/rectangle.hpp"
@@ -12,7 +13,7 @@
 
 namespace papaya {
    namespace {
-      // Texture white;
+      Texture white;
    } // !anon
 
    bool Graphics::init()
@@ -21,11 +22,17 @@ namespace papaya {
       glEnable(GL_BLEND);
       glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+      unsigned int data[] = { 0xffffffff }; // 0xaarrggbb
+      if (!white.create(Texture::Format::Rgba8, 1, 1, data)) {
+         return false;
+      }
+
       return true;
    }
 
    void Graphics::shut()
    {
+      white.destroy();
    }
 
    void Graphics::clear(const Color &color)
@@ -53,7 +60,7 @@ namespace papaya {
    {
       assert( ((count % 4) == 0) );
 
-      // todo: bind texture or white (texture, see top)
+      glBindTexture(GL_TEXTURE_2D, texture ? texture->handle() : white.handle());
 
       glBegin(GL_QUADS); 
       {

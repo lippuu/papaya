@@ -97,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\graphics\graphics.cc" />
+    <ClCompile Include="src\graphics\texture.cc" />
     <ClCompile Include="src\input\input.cc" />
     <ClCompile Include="src\input\keyboard.cc" />
     <ClCompile Include="src\input\mouse.cc" />
@@ -119,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphics\graphics.hpp" />
+    <ClInclude Include="include\graphics\texture.hpp" />
     <ClInclude Include="include\graphics\vertex.hpp" />
     <ClInclude Include="include\input\button.hpp" />
     <ClInclude Include="include\input\input.hpp" />
