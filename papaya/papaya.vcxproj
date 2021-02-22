@@ -117,6 +117,7 @@
     <ClCompile Include="src\platform\filestream.cc" />
     <ClCompile Include="src\platform\filesystem.cc" />
     <ClCompile Include="src\platform\platform.cc" />
+    <ClCompile Include="src\platform\time.cc" />
     <ClCompile Include="src\platform\window.cc" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="include\platform\filestream.hpp" />
     <ClInclude Include="include\platform\filesystem.hpp" />
     <ClInclude Include="include\platform\platform.hpp" />
+    <ClInclude Include="include\platform\time.hpp" />
     <ClInclude Include="include\platform\window.hpp" />
   </ItemGroup>
   <ItemGroup>
