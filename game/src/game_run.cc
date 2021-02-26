@@ -15,6 +15,7 @@ int game_run()
       Input input;
       FileSystem filesystem("lippuu", "papaya");
       TextureStorage textures(filesystem);
+      Renderer renderer;
 
       if (!Graphics::init()) {
          throw std::runtime_error("Could not initialize Graphics!");
@@ -28,17 +29,14 @@ int game_run()
 
       Debug::log("Platform and window ok!");
 
-      const Vertex vertices[] =
-      {
-         { Vector2( 10.0f,  10.0f), Vector2(0.0f, 0.0f), Color(1.0f, 1.0f, 1.0f, 1.0f) },
-         { Vector2(200.0f,  10.0f), Vector2(1.0f, 0.0f), Color(1.0f, 1.0f, 1.0f, 1.0f) },
-         { Vector2(200.0f, 200.0f), Vector2(1.0f, 1.0f), Color(1.0f, 1.0f, 1.0f, 1.0f) },
-         { Vector2( 10.0f, 200.0f), Vector2(0.0f, 1.0f), Color(1.0f, 1.0f, 1.0f, 1.0f) },
-      };
-
       const char *test_image_filename = "assets/test.png";
       textures.load(test_image_filename);
       const Texture *image = textures.find(test_image_filename);
+
+      Sprite sprite({ 64.0f, 64.0f }, { 0.0f, 0.0f, 1.0f, 1.0f }, image);
+      Transform transform({ 100.0f, 100.0f });
+      transform.set_origin({ 32.0f, 32.0f })
+         .set_rotation(45.0f);
 
       bool running = true;
       while (running) {
@@ -58,8 +56,10 @@ int game_run()
          Graphics::clear({ 1.0f, mp.x_, mp.y_, 1.0f });
          Graphics::set_viewport({ 0, 0, 1024, 576 });
          Graphics::set_projection( Matrix4::orthographic(1024.0f, 576.0f) );
+         //Graphics::render(image, 4, vertices);
 
-         Graphics::render(image, 4, vertices);
+         renderer.draw(sprite, transform); 
+         renderer.flush();
 
          window.present();
       }

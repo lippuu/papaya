@@ -119,6 +119,9 @@
     <ClCompile Include="src\platform\platform.cc" />
     <ClCompile Include="src\platform\time.cc" />
     <ClCompile Include="src\platform\window.cc" />
+    <ClCompile Include="src\scene\renderer.cc" />
+    <ClCompile Include="src\scene\sprite.cc" />
+    <ClCompile Include="src\scene\transform.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphics\graphics.hpp" />
@@ -147,6 +150,9 @@
     <ClInclude Include="include\platform\platform.hpp" />
     <ClInclude Include="include\platform\time.hpp" />
     <ClInclude Include="include\platform\window.hpp" />
+    <ClInclude Include="include\scene\renderer.hpp" />
+    <ClInclude Include="include\scene\sprite.hpp" />
+    <ClInclude Include="include\scene\transform.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\graphics\texture_storage.hpp" />

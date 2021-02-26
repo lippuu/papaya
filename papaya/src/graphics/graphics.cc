@@ -51,7 +51,6 @@ namespace papaya {
       glMatrixMode(GL_PROJECTION);
       glLoadIdentity();
       glMultMatrixf(&projection.x_.x_);
-
       glMatrixMode(GL_MODELVIEW);
       glLoadIdentity();
    }
@@ -59,9 +58,9 @@ namespace papaya {
    void Graphics::render(const Texture *texture, const int count, const Vertex *vertices)
    {
       assert( ((count % 4) == 0) );
-
       glBindTexture(GL_TEXTURE_2D, texture ? texture->handle() : white.handle());
 
+      // todo: replace with glVertexPointer() et al.
       glBegin(GL_QUADS); 
       {
          for (int index = 0; index < count; index++) {

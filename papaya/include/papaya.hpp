@@ -12,7 +12,7 @@
 #include <math/matrix4.hpp>
 #include <math/random.hpp>
 
-#include <platform/time.hpp>
+#include <platform/time.hpp> 
 #include <platform/debug.hpp>
 #include <platform/platform.hpp>
 #include <platform/window.hpp>
@@ -29,3 +29,7 @@
 #include <graphics/texture.hpp>
 #include <graphics/graphics.hpp> 
 #include <graphics/texture_storage.hpp>
+
+#include <scene/sprite.hpp>
+#include <scene/transform.hpp>
+#include <scene/renderer.hpp>
