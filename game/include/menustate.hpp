@@ -16,6 +16,9 @@ namespace spacegame {
    public:
       MenuState(papaya::Runtime &runtime, PlayState *play);
 
+      bool init();
+      void shut();
+
       virtual papaya::State *next() const;
       virtual bool update(const papaya::Time &deltatime);
       virtual void render(papaya::Renderer &renderer);

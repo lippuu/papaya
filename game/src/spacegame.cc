@@ -16,6 +16,10 @@ namespace spacegame {
 
    bool SpaceGame::init()
    {
+      if (!menu_.init()) {
+         return false;
+      }
+
       if (!play_.init()) {
          return false;
       }
@@ -27,6 +31,8 @@ namespace spacegame {
 
    void SpaceGame::shut()
    {
+      menu_.shut();
+      play_.shut();
    }
 
    bool SpaceGame::tick(const papaya::Time &deltatime)

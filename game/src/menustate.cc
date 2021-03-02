@@ -18,6 +18,16 @@ namespace spacegame {
    {
    }
 
+
+   bool MenuState::init()
+   {
+      return true;
+   }
+
+   void MenuState::shut() 
+   {
+   }
+
    papaya::State *MenuState::next() const
    {
       return next_;
