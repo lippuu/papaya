@@ -33,3 +33,6 @@
 #include <scene/sprite.hpp>
 #include <scene/transform.hpp>
 #include <scene/renderer.hpp>
+
+#include <game/runtime.hpp>
+#include <game/game.hpp>

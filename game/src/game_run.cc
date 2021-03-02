@@ -11,6 +11,8 @@ int game_run()
    try { 
       Platform platform;
       Window window("papaya", 1024, 576);
+      Debug::log("Platform and window ok!");
+
       Dispatcher dispatcher;
       Input input;
       FileSystem filesystem("lippuu", "papaya");
@@ -27,16 +29,18 @@ int game_run()
       dispatcher.register_listener<MouseButtonEvent>(input);
       dispatcher.register_listener<MouseWheelEvent>(input);
 
-      Debug::log("Platform and window ok!");
+      Runtime runtime(dispatcher,
+                      input,
+                      filesystem,
+                      textures,
+                      renderer);
 
-      const char *test_image_filename = "assets/test.png";
-      textures.load(test_image_filename);
-      const Texture *image = textures.find(test_image_filename);
-
-      Sprite sprite({ 64.0f, 64.0f }, { 0.0f, 0.0f, 1.0f, 1.0f }, image);
-      Transform transform({ 100.0f, 100.0f });
-      transform.set_origin({ 32.0f, 32.0f })
-         .set_rotation(45.0f);
+      // todo: replace with actual game class!
+      Game game(runtime);
+      if (!game.init()) {
+         Debug::log("Failed to initialize game!");
+         return 0;
+      }
 
       bool running = true;
       while (running) {
@@ -45,25 +49,15 @@ int game_run()
             running = false;
          }
 
-         if (input.keyboard().any_released()) {
+         auto dt = runtime.deltatime();
+         if (!game.tick(dt)) {
             running = false;
          }
-
-         float mouse_x = static_cast<float>(input.mouse().x());
-         float mouse_y = static_cast<float>(input.mouse().y());
-         Vector2 mp = Vector2(mouse_x, mouse_y) / Vector2(1024.0f, 576.0f);
-
-         Graphics::clear({ 1.0f, mp.x_, mp.y_, 1.0f });
-         Graphics::set_viewport({ 0, 0, 1024, 576 });
-         Graphics::set_projection( Matrix4::orthographic(1024.0f, 576.0f) );
-         //Graphics::render(image, 4, vertices);
-
-         renderer.draw(sprite, transform); 
-         renderer.flush();
 
          window.present();
       }
 
+      game.shut();
       Graphics::shut();
    } 
    catch (std::exception &e) {
