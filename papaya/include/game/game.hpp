@@ -5,6 +5,7 @@
 namespace papaya {
    class Time;
    class Runtime;
+   class State;
 
    class Game {
    public:
@@ -17,5 +18,6 @@ namespace papaya {
 
    protected:
       Runtime &runtime_;
+      State *current_;
    };
 } // !papaya

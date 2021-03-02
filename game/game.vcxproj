@@ -101,6 +101,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\game_run.cc" />
+    <ClCompile Include="src\spacegame.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\spacegame.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

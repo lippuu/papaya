@@ -1,6 +1,7 @@
 // game_run.cc
 
 #include <papaya.hpp>
+#include "spacegame.hpp"
 
 #include <stdexcept>
 
@@ -35,9 +36,8 @@ int game_run()
                       textures,
                       renderer);
 
-      // todo: replace with actual game class!
-      Game game(runtime);
-      if (!game.init()) {
+      spacegame::SpaceGame *game = new spacegame::SpaceGame(runtime);
+      if (!game->init()) {
          Debug::log("Failed to initialize game!");
          return 0;
       }
@@ -50,14 +50,16 @@ int game_run()
          }
 
          auto dt = runtime.deltatime();
-         if (!game.tick(dt)) {
+         if (!game->tick(dt)) {
             running = false;
          }
 
          window.present();
       }
 
-      game.shut();
+      game->shut();
+      delete game;
+
       Graphics::shut();
    } 
    catch (std::exception &e) {
