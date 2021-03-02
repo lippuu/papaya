@@ -17,6 +17,9 @@ namespace papaya {
       virtual bool tick(const Time &deltatime); 
 
    protected:
+      void set_active_state(State *state);
+
+   protected:
       Runtime &runtime_;
       State *current_;
    };

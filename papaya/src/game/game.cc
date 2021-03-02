@@ -24,11 +24,6 @@ namespace papaya {
 
    bool Game::tick(const Time &deltatime)
    {
-      // note: development key released
-      if (runtime_.input().keyboard().released(Key::Escape)) {
-         return false;
-      }
-
       if (current_ == nullptr) {
          return false;
       }
@@ -45,5 +40,10 @@ namespace papaya {
       current_->render(runtime_.renderer());
 
       return true;
+   }
+
+   void Game::set_active_state(State *state)
+   {
+      current_ = state;
    }
 } // !papaya
