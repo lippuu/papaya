@@ -5,9 +5,12 @@
 
 #include <platform/time.hpp>
 #include <platform/debug.hpp>
-#include <game/runtime.hpp>
 #include <input/input.hpp>
+#include <graphics/graphics.hpp>
 #include <scene/renderer.hpp>
+#include <game/runtime.hpp>
+
+using namespace papaya;
 
 namespace spacegame {
    MenuState::MenuState(papaya::Runtime &runtime, PlayState *play)
@@ -17,7 +20,6 @@ namespace spacegame {
       , play_(play)
    {
    }
-
 
    bool MenuState::init()
    {
@@ -35,7 +37,6 @@ namespace spacegame {
 
    bool MenuState::update(const papaya::Time &deltatime)
    {
-      using namespace papaya;
       if (keyboard_.released(Key::Escape)) {
          next_ = nullptr;
          return false;
@@ -50,5 +51,6 @@ namespace spacegame {
 
    void MenuState::render(papaya::Renderer &renderer)
    {
+      Graphics::clear({ 0.1f, 0.2f, 0.3f, 1.0f });
    }
 } // !spacegame
