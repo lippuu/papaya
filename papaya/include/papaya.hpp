@@ -37,3 +37,6 @@
 #include <game/runtime.hpp>
 #include <game/game.hpp>
 #include <game/state.hpp>
+#include <game/gameobject.hpp>
+#include <game/component.hpp>
+#include <game/component_registry.hpp>

@@ -96,7 +96,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\component.cc" />
     <ClCompile Include="src\game\game.cc" />
+    <ClCompile Include="src\game\gameobject.cc" />
     <ClCompile Include="src\game\runtime.cc" />
     <ClCompile Include="src\graphics\graphics.cc" />
     <ClCompile Include="src\graphics\texture.cc" />
@@ -126,7 +128,10 @@
     <ClCompile Include="src\scene\transform.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\game\component.hpp" />
+    <ClInclude Include="include\game\component_registry.hpp" />
     <ClInclude Include="include\game\game.hpp" />
+    <ClInclude Include="include\game\gameobject.hpp" />
     <ClInclude Include="include\game\runtime.hpp" />
     <ClInclude Include="include\game\state.hpp" />
     <ClInclude Include="include\graphics\graphics.hpp" />
