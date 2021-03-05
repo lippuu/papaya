@@ -5,6 +5,7 @@
 #include "scene/transform.hpp"
 #include "graphics/graphics.hpp"
 #include "graphics/texture.hpp"
+#include "math/color.hpp"
 #include "math/vector4.hpp"
 #include "math/matrix3.hpp"
 
@@ -47,6 +48,11 @@ namespace papaya {
    Renderer::Renderer()
    {
       vertices_.reserve(4 * 1024);
+   }
+
+   void Renderer::clear(const Color &color)
+   {
+      Graphics::clear(color);
    }
 
    void Renderer::draw(const Sprite &sprite, const Transform &transform)

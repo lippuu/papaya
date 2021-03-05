@@ -6,6 +6,7 @@
 #include <graphics/vertex.hpp>
 
 namespace papaya {
+   class Color;
    class Sprite;
    class Transform;
    class Texture;
@@ -14,6 +15,7 @@ namespace papaya {
    public:
       Renderer();
 
+      void clear(const Color &color);
       void draw(const Sprite &sprite, const Transform &transform);
       void flush();
 

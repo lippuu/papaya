@@ -1,6 +1,7 @@
 // spacegame.cc
 
 #include "spacegame.hpp"
+#include "graphics/graphics.hpp"
 
 using namespace papaya;
 
@@ -68,6 +69,10 @@ namespace spacegame {
 
    bool SpaceGame::tick(const papaya::Time &deltatime)
    {
+      Graphics::clear(Color::Black);
+      Graphics::set_viewport({ 0, 0, 1024, 576 });
+      Graphics::set_projection(Matrix4::orthographic(1024.0f, 576.0f));
+
       return Game::tick(deltatime);
    }
 } // !spacegame
