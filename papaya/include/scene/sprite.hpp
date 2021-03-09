@@ -3,6 +3,7 @@
 #pragma once
 
 #include <math/color.hpp>
+#include <math/rectangle.hpp>
 #include <math/vector2.hpp>
 #include <math/vector4.hpp>
 
@@ -14,6 +15,7 @@ namespace papaya {
       Sprite();
       Sprite(const Vector2 &size, const Vector4 &texcoord);
       Sprite(const Vector2 &size, const Vector4 &texcoord, const Texture *texture);
+      Sprite(const Rectangle &rect, const Texture *texture);
 
       bool is_valid() const;
       bool has_texture() const;

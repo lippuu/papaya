@@ -1,6 +1,7 @@
 // sprite.cc
 
 #include "scene/sprite.hpp"
+#include "graphics/texture.hpp"
 
 namespace papaya {
    Sprite::Sprite()
@@ -23,6 +24,21 @@ namespace papaya {
       , texcoords_(texcoords)
       , texture_(texture)
    {
+   }
+
+   Sprite::Sprite(const Rectangle &rect, const Texture *texture)
+      : color_(1.0f, 1.0f, 1.0f, 1.0f)
+      , size_(rect.width_, rect.height_)
+      , texcoords_{}
+      , texture_(texture)
+   {
+      const float inv_width = 1.0f / texture->width();
+      const float inv_height = 1.0f / texture->handle();
+
+      texcoords_.x_ = (rect.x_) * inv_width;
+      texcoords_.y_ = (rect.y_) * inv_height;
+      texcoords_.z_ = (rect.x_ + rect.width_) * inv_width;
+      texcoords_.w_ = (rect.y_ + rect.height_) * inv_height;
    }
 
    bool Sprite::is_valid() const

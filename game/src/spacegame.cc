@@ -6,6 +6,19 @@
 using namespace papaya;
 
 namespace spacegame {
+   namespace {
+      bool ends_with(const char *src, const char *end) {
+         const auto src_len = strlen(src);
+         if (src_len == 0) {
+            return false;
+         }
+
+         const auto end_len = strlen(end);
+
+         return true;
+      }
+   } // !anon
+
    struct Velocity : Component<Velocity> {
       Velocity(GameObject *parent)
          : Component(parent)
@@ -15,9 +28,9 @@ namespace spacegame {
       Vector2 direction_;
    };
    
-   struct Position : ComponentBase {
+   struct Position : Component<Position> {
       Position(GameObject *parent)
-         : ComponentBase(parent, ComponentRegistry::family<Position>())
+         : Component(parent)
       {
       }
 
@@ -47,6 +60,14 @@ namespace spacegame {
       GameObject go;
       go.add_component<Position>();
       go.add_component<Velocity>();
+
+      auto loader = [&](const char *filename)
+      {
+         // todo: if filename ends with ".png" we can do this
+         runtime_.textures().load(filename);
+      };
+
+      runtime_.filesystem().enumerate_folder("assets/", loader, true);
 
       if (!menu_.init()) {
          return false;
