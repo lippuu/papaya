@@ -14,6 +14,20 @@ namespace spacegame {
          }
 
          const auto end_len = strlen(end);
+         if (end_len == 0) {
+            return false;
+         }
+
+         if (src_len < end_len) {
+            return false;
+         }
+
+         const char *at = src + (src_len - end_len);
+         for (int index = 0; index < end_len; index++) {
+            if (at[index] != end[index]) {
+               return false;
+            }
+         }
 
          return true;
       }
@@ -63,8 +77,9 @@ namespace spacegame {
 
       auto loader = [&](const char *filename)
       {
-         // todo: if filename ends with ".png" we can do this
-         runtime_.textures().load(filename);
+         if (ends_with(filename, ".png")) {
+            runtime_.textures().load(filename);
+         }
       };
 
       runtime_.filesystem().enumerate_folder("assets/", loader, true);
