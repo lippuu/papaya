@@ -118,6 +118,7 @@
     <ClCompile Include="src\papaya.cc" />
     <ClCompile Include="src\platform\debug.cc" />
     <ClCompile Include="src\platform\dispatcher.cc" />
+    <ClCompile Include="src\platform\filearchive.cc" />
     <ClCompile Include="src\platform\filestream.cc" />
     <ClCompile Include="src\platform\filesystem.cc" />
     <ClCompile Include="src\platform\platform.cc" />
@@ -155,6 +156,7 @@
     <ClInclude Include="include\platform\debug.hpp" />
     <ClInclude Include="include\platform\dispatcher.hpp" />
     <ClInclude Include="include\platform\events.hpp" />
+    <ClInclude Include="include\platform\filearchive.hpp" />
     <ClInclude Include="include\platform\filestream.hpp" />
     <ClInclude Include="include\platform\filesystem.hpp" />
     <ClInclude Include="include\platform\platform.hpp" />

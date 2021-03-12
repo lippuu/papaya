@@ -20,6 +20,7 @@
 #include <platform/dispatcher.hpp>
 #include <platform/filestream.hpp>
 #include <platform/filesystem.hpp>
+#include <platform/filearchive.hpp>
 
 #include <input/mouse.hpp>
 #include <input/keyboard.hpp>

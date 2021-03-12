@@ -84,6 +84,21 @@ namespace spacegame {
 
       runtime_.filesystem().enumerate_folder("assets/", loader, true);
 
+      FileStream stream = runtime_.filesystem().open("assets/test.zip");
+      if (!stream.is_valid()) {
+         return false;
+      }
+
+      FileArchive archive(stream);
+      if (!archive.open()) {
+         return false;
+      }
+
+      std::vector<char> data;
+      //archive.extract("test.png", data);
+      archive.extract("atlas.txt", data);
+      std::string content(data.data(), data.size());
+
       if (!menu_.init()) {
          return false;
       }
